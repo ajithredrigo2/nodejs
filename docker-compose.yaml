@@ -1,0 +1,10 @@
+version: '3.9'
+
+services:
+  web:
+    container_name: app
+    build: .
+#    command: node app.js
+    ports:
+      - "8000:8000"
+    
