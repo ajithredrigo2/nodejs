@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8000:8000"  # Adjust the port as needed
+      - "3000:3000"  # Adjust the port as needed
 
   owasp-dependency-check:
     image: owasp/dependency-check

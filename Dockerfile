@@ -15,5 +15,5 @@ RUN npm install
 COPY . .
 
 RUN echo "Starting service at on port 3000.."
-EXPOSE 8000
+EXPOSE 3000
 ENTRYPOINT ["npm", "start"]
