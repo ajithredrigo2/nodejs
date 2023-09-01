@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Node API Demo
 
 [![Build Status](https://travis-ci.org/robincher/nodejs-api-demo.svg?branch=master)](https://travis-ci.org/robincher/nodejs-api-demo)
@@ -51,3 +52,20 @@ curl -X POST \
 
 - [Codementor Tutorial](https://www.codementor.io/olatundegaruba/nodejs-restful-apis-in-10-minutes-q0sgsfhbd)
 - [Implementing Swagger](https://github.com/Mobecom/JSDoc-Swagger-Washywashy)
+=======
+# node-todo-cicd
+
+Run these commands:
+
+
+`sudo apt install nodejs`
+
+
+`sudo apt install npm`
+
+
+`npm install`
+
+`node app.js`
+
+>>>>>>> bb5c7c4bf4e26cdc9c0809728ce56b8c640c02dd

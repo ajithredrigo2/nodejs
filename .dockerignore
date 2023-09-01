@@ -1,2 +1,11 @@
+<<<<<<< HEAD
 node_modules
 npm-debug.log
+=======
+.git
+.gitignore
+.idea
+node_modules
+npm-debug.log
+package-lock.json
+>>>>>>> bb5c7c4bf4e26cdc9c0809728ce56b8c640c02dd
