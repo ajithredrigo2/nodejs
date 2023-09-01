@@ -1,53 +1,61 @@
-# Node API Demo
+![Simplicit&eacute; Software](https://www.simplicite.io/resources/logos/logo250-grey.png)
+* * *
 
-[![Build Status](https://travis-ci.org/robincher/nodejs-api-demo.svg?branch=master)](https://travis-ci.org/robincher/nodejs-api-demo)
+Web demo
+========
 
-Demo REST API built with Node.js and OpenAPI (Swagger) documentation.
+This project is a **very basic** web front-end demo using
+the [Simplicit&eacute;&reg; node.js &amp; browser JavaScript library](https://github.com/simplicitesoftware/nodejs-api)
+to connect to a Simplicit&eacute;&reg; demo backend instance from the **client-side**.
 
-## Tech Stack
+Install
+-------
 
-- Node.js 10.14.x
-- NPM Libraries
-  - Nodemon for Debugging and keeping track of changed files
-  - Express for initiating the server
-  - Mongoose for interracting with MongoDB
-  - BodyParser to parse request body
-- MongoDB 4.0 (Docker container recommended)
-
-## Walkthrough
-
-### Set-up Mongo Docker (Recommended)
-
-```
-docker pull mongo
-
-docker run -p 27017:27017 -v ~/data/db:/data/db --name mongodb -d  mongo
+```bash
+npm install
 ```
 
-### Starting the REST API Server
+Check syntax and rules
+----------------------
 
-```
-npm start run
-```
-
-View the OpenAPI documentation @ http://localhost:3000/api-docs
-
-### Create a sample task
-
-```
-curl -X POST \
-  http://localhost:3000/tasks \
-  -H 'Accept: */*' \
-  -H 'Accept-Encoding: *' \
-  -H 'Content-Type: application/json' \
-  -H 'Host: localhost:3000' \
-  -d '{
-	"name" : "Do something",
-	"status" : "pending"
-}'
+```bash
+npm run lint
 ```
 
-## Reference
+Run in developement mode
+------------------------
 
-- [Codementor Tutorial](https://www.codementor.io/olatundegaruba/nodejs-restful-apis-in-10-minutes-q0sgsfhbd)
-- [Implementing Swagger](https://github.com/Mobecom/JSDoc-Swagger-Washywashy)
+```bash
+npm run start
+```
+
+Build for production
+--------------------
+
+```bash
+npm run build
+```
+
+Run in production mode
+----------------------
+
+```bash
+npm run serve
+```
+
+License
+=======
+
+Copyright 2018-2021 Simplicit&eacute; Software
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at:
+
+[](http://www.apache.org/licenses/LICENSE-2.0)
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
