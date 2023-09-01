@@ -3,7 +3,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile.nodejs  # Use the Dockerfile you created
+      dockerfile: Dockerfile  # Use the Dockerfile you created
     ports:
       - "3000:3000"  # Adjust the port as needed
 
