@@ -1,14 +1,11 @@
 version: '3'
 services:
-  app:
+  web:
     build:
       context: .
-      dockerfile: Dockerfile  # Use the Dockerfile you created
+      dockerfile: Dockerfile
     ports:
-      - "3000:3000"  # Adjust the port as needed
-
-  owasp-dependency-check:
-    image: owasp/dependency-check:latest
-    volumes:
-      - .:/src
-    command: ["--scan", "/src"]
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+    restart: always
