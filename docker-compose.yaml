@@ -10,5 +10,5 @@ services:
   owasp-dependency-check:
     image: owasp/dependency-check
     volumes:
-      - .:/src
-    command: ["--scan", "/src"]
+      - .:/
+    command: ["--scan", "/"]
