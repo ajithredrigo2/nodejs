@@ -1,32 +1,38 @@
 {
-  "name": "nodejs-notes-app",
-  "version": "2.0.0",
-  "description": "Notes App",
-  "main": "index.js",
+  "name": "nodejs-api-demo",
+  "version": "0.1.0",
+  "description": "Simple Restful API demo built with Node",
+  "main": "server.js",
+  "engineStrict": true,
+  "engines": {
+    "node": "^10.14.x"
+  },
   "scripts": {
-    "dev": "nodemon src/index.js",
-    "start": "node src/index.js"
+    "test": "mocha",
+    "watch": "nodemon server.js",
+    "start": "node server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "async": "^3.2.0",
-    "bcryptjs": "^2.4.3",
-    "connect-flash": "^0.1.1",
-    "express": "^4.17.1",
-    "express-handlebars": "^3.1.0",
-    "express-session": "^1.17.0",
-    "method-override": "^3.0.0",
-    "moment": "^2.24.0",
-    "mongoose": "^5.8.9",
-    "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robincher/nodejs-api-demo.git"
   },
+  "author": "Robin Cher",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/robincher/nodejs-api-demo/issues"
+  },
+  "homepage": "git+https://github.com/robincher/nodejs-api-demo.git#readme",
   "devDependencies": {
-    "dotenv": "^8.2.0",
-    "handlebars": "^4.5.0",
-    "nodemon": "^2.0.2",
-    "npm-check-updates": "^4.0.1"
+    "nodemon": "^2.0.1",
+    "mocha": "^6.2.2",
+    "supertest": "4.0.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.13",
+    "swagger-jsdoc": "^3.4.0",
+    "swagger-ui-express": "^4.1.2"
   }
 }

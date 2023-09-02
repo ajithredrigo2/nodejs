@@ -7,9 +7,5 @@ services:
     ports:
       - "3000:3000"
     environment:
-      NODE_ENV: development
+      NODE_ENV: production
     restart: always
-  mongodb:
-    image: mongo:latest
-    ports:
-      - '27017:27017'

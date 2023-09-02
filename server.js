@@ -1,53 +1,72 @@
-const express = require('express');
-const exphbs = require('express-handlebars');
-const path = require('path');
-const methodOverride = require('method-override');
-const session = require('express-session');
-const flash = require('connect-flash');
-const passport = require('passport');
- 
-// Initializations
-const app = express();
-require('./config/passport');
+"use strict";
+const app = require("express")();
+const connectDB = require("./conf/database");
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
-// settings
-app.set('port', process.env.PORT || 4000);
-app.set('views', path.join(__dirname, 'views'));
-app.engine('.hbs', exphbs({
-  defaultLayout: 'main',
-  layoutsDir: path.join(app.get('views'), 'layouts'),
-  partialsDir: path.join(app.get('views'), 'partials'),
-  extname: '.hbs'
-}));
-app.set('view engine', '.hbs');
+const serverHost = process.env.HOSTNAME || "localhost"
+const serverPort = process.env.PORT || 3000;
 
-// middlewares
-app.use(express.urlencoded({extended: false}));
-app.use(methodOverride('_method'));
-app.use(session({
-  secret: 'secret',
-  resave: true,
-  saveUninitialized: true
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
+const swaggerUi = require("swagger-ui-express");
+const swaggerJSDoc = require("swagger-jsdoc");
+let index = require("./src/routes/index");
 
-// Global Variables
-app.use((req, res, next) => {
-  res.locals.success_msg = req.flash('success_msg');
-  res.locals.error_msg = req.flash('error_msg');
-  res.locals.error = req.flash('error');
-  res.locals.user = req.user || null;
-  next();
+connectDB();
+
+// Swagger definition
+// You can set every attribute except paths and swagger
+// https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md
+let swaggerDefinition = {
+  info: {
+    // API informations (required)
+    title: "Sample REST API with Node", // Title (required)
+    version: "1.0.0", // Version (required)
+    description: "Sample Task API" // Description (optional)
+  },
+  host: `${serverHost}:${serverPort}`,
+  basePath: "/" // Base path (optional)
+};
+
+// Options for the swagger docs
+let options = {
+  // Import swaggerDefinitions
+  swaggerDefinition: swaggerDefinition,
+  // Path to files that contain the annotated API docs
+  apis: [
+    "./src/routes/index.js",
+    "./src/routes/tasks/index.js",
+    "./routers/parameters.yaml"
+  ]
+};
+
+// Initialize swagger-jsdoc -> returns validated swagger spec in json format
+let swaggerSpec = swaggerJSDoc(options);
+
+// Serve swagger docs the way you like (Recommendation: swagger-tools)
+app.get("/api-docs.json", function (req, res) {
+  res.setHeader("Content-Type", "application/json");
+  res.send("swaggerSpec");
 });
 
-// routes
-app.use(require('./routes/index.routes'));
-app.use(require('./routes/users.routes'));
-app.use(require('./routes/notes.routes'));
+//Parse incoming request bodies and register nested route
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use("/", index);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use(function (req, res) {
+  res.status(404).send({
+    url: req.originalUrl + " not found"
+  });
+});
 
-// static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.listen(serverPort);
+
+console.log(`RESTful API server started on port ${serverPort}`);
+console.log(`Listening for traffic @ http://${serverHost}:${serverPort}`);
 
 module.exports = app;
