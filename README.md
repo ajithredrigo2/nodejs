@@ -1,15 +1,7 @@
-# node-todo-cicd
+# nodejsApp
 
-Run these commands:
+to start 
+npm install
 
-
-`sudo apt install nodejs`
-
-
-`sudo apt install npm`
-
-
-`npm install`
-
-`node app.js`
-
+to run
+node index.js
