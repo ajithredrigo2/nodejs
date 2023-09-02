@@ -9,3 +9,7 @@ services:
     environment:
       NODE_ENV: development
     restart: always
+  mongodb:
+    image: mongo:latest
+    ports:
+      - '27017:27017'
